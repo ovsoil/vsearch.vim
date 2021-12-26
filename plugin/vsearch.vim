@@ -34,3 +34,8 @@ if !hasmapto("<Plug>VLToggle")
   nmap <unique> <Leader>vl <Plug>VLToggle
 endif
 let &cpo = s:save_cpo | unlet s:save_cpo
+
+" highlight but not search the word at cursor
+nnoremap <leader>* :let @/='\<<C-R>=expand("<cword>")<cr>\>'<cr>:set hls<cr>
+" highlight but not search the selected text
+vnoremap <leader>* :<C-U>call <SID>VSetSearch('/')<cr>/<C-R>/<cr>N
